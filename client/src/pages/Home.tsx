@@ -30,7 +30,7 @@ const cases = [
 ];
 
 const team = [
-  ["FN", "Farha Najameel", "FOUNDER", "Visionary leader. Turns bold ideas into businesses that move."],
+  ["FN", "Farha Najameel", "FOUNDER", "Visionary leader. Turns bold ideas into businesses that move.", "/team-farha.png"],
   ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results."],
   ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences."],
 ];
@@ -104,7 +104,7 @@ export default function Home() {
 
         <section className="ref-section why-ref-section"><div className="ref-container"><p className="section-code">/ 04 — WHY VERNA</p><div className="why-layout"><h2 className="scroll-reveal">NOT JUST<br /><span className="purple-text">ADVICE.</span><br />THE SYSTEM<br />TO MOVE IT.</h2><div className="why-list">{[["01", "SENIOR BY DESIGN", "The people in the room are the people doing the work."], ["02", "OUTCOMES OVER THEATRE", "We measure progress in decisions made and products shipped."], ["03", "CAPABILITY LEFT BEHIND", "The best engagement makes your team stronger after we go."]].map(([num, title, copy]) => <div className="why-row scroll-reveal" key={num}><span>{num}</span><div><h3>{title}</h3><p>{copy}</p></div><Check size={16} /></div>)}</div></div></div></section>
 
-        <section id="about" className="ref-section about-ref-section"><div className="ref-container"><p className="section-code">/ 05 — THE PEOPLE</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">TEAM</span><span className="muted-text">.</span></h2><p>Small enough to care deeply. Experienced enough to know what it takes.</p></div><div className="team-list">{team.map(([initials, name, role, copy], index) => <article className="team-row scroll-reveal" key={name}><div className={`team-avatar team-avatar-${index}`}><span>{initials}</span><div /></div><div><p className="team-role">{role}</p><h3>{name}</h3><p className="team-copy">{copy}</p></div><ArrowUpRight size={20} /></article>)}</div></div></section>
+        <section id="about" className="ref-section about-ref-section"><div className="ref-container"><p className="section-code">/ 05 — THE PEOPLE</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">TEAM</span><span className="muted-text">.</span></h2><p>Small enough to care deeply. Experienced enough to know what it takes.</p></div><div className="team-list">{team.map(([initials, name, role, copy, image], index) => <article className="team-row scroll-reveal" key={name}><div className={`team-avatar team-avatar-${index}`}>{image ? <img src={image} alt={name} className="team-avatar-img" /> : <><span>{initials}</span><div /></>}</div><div><p className="team-role">{role}</p><h3>{name}</h3><p className="team-copy">{copy}</p></div><ArrowUpRight size={20} /></article>)}</div></div></section>
 
         <section className="testimonial-ref-section"><div className="ref-container testimonial-grid"><span className="quote-mark">“</span><blockquote>Verna brought strategic altitude and sleeves-rolled-up delivery. We left with a plan our teams actually believed in.</blockquote><div><span className="section-code">PLACEHOLDER TESTIMONIAL</span><p>Client name<br /><span>Role, Company</span></p></div></div></section>
 
