@@ -31,8 +31,8 @@ const cases = [
 
 const team = [
   ["FN", "Farha Najameel", "FOUNDER", "Visionary leader. Turns bold ideas into businesses that move.", "/team-farha.png"],
-  ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results."],
-  ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences."],
+  ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results.", "/team-sangeeth.jpg"],
+  ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences.", "/team-sibin.jpg"],
 ];
 
 export default function Home() {
