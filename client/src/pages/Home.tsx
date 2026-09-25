@@ -1,356 +1,119 @@
-import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
-import {
-  ArrowDownRight,
-  ArrowRight,
-  ArrowUpRight,
-  BarChart3,
-  Check,
-  ChevronDown,
-  Clock3,
-  Compass,
-  Cpu,
-  ExternalLink,
-  Layers3,
-  Linkedin,
-  Mail,
-  MapPin,
-  Menu,
-  Network,
-  Plus,
-  Quote,
-  ShieldCheck,
-  Sparkles,
-  Target,
-  Workflow,
-  X,
-} from "lucide-react";
+import { useEffect, useState, type FormEvent } from "react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "#home" },
   { label: "Expertise", href: "#expertise" },
-  { label: "Approach", href: "#approach" },
-  { label: "Results", href: "#results" },
+  { label: "Work", href: "#results" },
   { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const services = [
-  {
-    number: "01",
-    icon: Compass,
-    title: "Strategy & Transformation",
-    text: "Turn ambition into a practical roadmap that aligns leadership, technology, and the operating model.",
-    tags: ["Operating model", "Growth strategy", "Portfolio design"],
-  },
-  {
-    number: "02",
-    icon: Workflow,
-    title: "Digital Operations",
-    text: "Remove friction from critical workflows with focused process redesign and automation that compounds.",
-    tags: ["Process design", "Automation", "Performance"],
-  },
-  {
-    number: "03",
-    icon: Cpu,
-    title: "Technology Delivery",
-    text: "Move from decisions to shipped outcomes with senior product, engineering, and delivery leadership.",
-    tags: ["Product delivery", "Architecture", "Team enablement"],
-  },
+  ["01", "STRATEGY & TRANSFORMATION", "Make the important decisions visible — and make them stick."],
+  ["02", "DIGITAL OPERATIONS", "Faster, clearer systems for the work that keeps the business moving."],
+  ["03", "TECHNOLOGY DELIVERY", "From product direction to shipped software, without the theatre."],
+  ["04", "OPERATING MODEL", "Align teams, incentives, and rituals around the outcomes that matter."],
+  ["05", "EXECUTIVE ADVISORY", "An experienced perspective when the next move carries weight."],
 ];
 
 const steps = [
-  {
-    number: "01",
-    title: "Assess",
-    text: "We build a shared fact base: where value is created, where it leaks, and what is blocking progress.",
-  },
-  {
-    number: "02",
-    title: "Strategize",
-    text: "We prioritize the few moves that matter, then make the trade-offs explicit for the people who own them.",
-  },
-  {
-    number: "03",
-    title: "Implement",
-    text: "We work beside your team to make change real — from decision forums to shipped product and new habits.",
-  },
-  {
-    number: "04",
-    title: "Optimize",
-    text: "We instrument the system, transfer capability, and keep improving after the engagement is complete.",
-  },
+  ["01", "SEE THE SYSTEM", "We get close to the facts, the friction, and the people who live with both."],
+  ["02", "FIND THE LEVER", "We identify the few moves that can change the trajectory — then make the trade-offs explicit."],
+  ["03", "MAKE IT REAL", "We work beside your team until the strategy is visible in decisions, delivery, and behaviour."],
 ];
 
 const cases = [
-  {
-    client: "Global logistics group",
-    label: "OPERATING MODEL / 2024",
-    title: "From fragmented planning to one connected network",
-    problem: "Five regional teams were planning capacity in different systems, slowing decisions and hiding risk.",
-    outcome: "22% faster planning cycles",
-    detail: "A shared operating cadence, data model, and decision cockpit made the network visible end to end.",
-    tone: "case-sand",
-  },
-  {
-    client: "Series C software company",
-    label: "PRODUCT / 2024",
-    title: "A product portfolio built for the next stage",
-    problem: "A fast-growing team had a long roadmap but no common view of customer value or delivery economics.",
-    outcome: "3x release confidence",
-    detail: "We reset portfolio governance and embedded a lightweight product operating system across four squads.",
-    tone: "case-blue",
-  },
-  {
-    client: "National financial institution",
-    label: "AUTOMATION / 2023",
-    title: "Turning manual controls into a growth engine",
-    problem: "Critical compliance workflows depended on spreadsheets, handoffs, and expensive rework.",
-    outcome: "40% less manual effort",
-    detail: "A pragmatic automation roadmap delivered measurable savings without compromising control or trust.",
-    tone: "case-ink",
-  },
+  ["OPERATING MODEL", "Global logistics group", "One connected network", "22% faster planning cycles"],
+  ["PRODUCT DELIVERY", "Series C software company", "A portfolio built for the next stage", "3× release confidence"],
+  ["AUTOMATION", "National financial institution", "Control without the drag", "40% less manual effort"],
 ];
 
 const team = [
-  {
-    initials: "MC",
-    name: "Maya Chen",
-    role: "Managing Partner",
-    bio: "Former COO and transformation lead. Helps executive teams make the complex feel actionable.",
-    accent: "#e5583f",
-  },
-  {
-    initials: "JR",
-    name: "Jonas Reed",
-    role: "Partner, Technology",
-    bio: "Product and platform operator. Turns strategy into systems that teams can ship and sustain.",
-    accent: "#233c59",
-  },
-  {
-    initials: "SK",
-    name: "Sara Khalil",
-    role: "Principal, Operations",
-    bio: "Process architect and change practitioner. Finds the leverage inside the day-to-day.",
-    accent: "#b99b70",
-  },
-];
-
-const models = [
-  {
-    name: "Focused project",
-    duration: "4–12 weeks",
-    text: "For a defined decision, transformation sprint, or delivery challenge with a clear finish line.",
-    best: "Best for a specific outcome",
-  },
-  {
-    name: "Embedded partnership",
-    duration: "3–9 months",
-    text: "For complex change that needs senior capacity alongside your team from plan through execution.",
-    best: "Best for momentum at scale",
-  },
-  {
-    name: "Executive advisory",
-    duration: "Ongoing",
-    text: "For leaders who want an experienced, independent perspective in the room when it matters.",
-    best: "Best for high-stakes decisions",
-  },
+  ["MC", "Maya Chen", "MANAGING PARTNER", "Former COO. Turns ambiguity into a plan people can actually carry."],
+  ["JR", "Jonas Reed", "PARTNER, TECHNOLOGY", "Product operator. Turns strategy into systems teams can ship and sustain."],
+  ["SK", "Sara Khalil", "PRINCIPAL, OPERATIONS", "Process architect. Finds the leverage hiding inside the day-to-day."],
 ];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const [submitted, setSubmitted] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const sections = ["home", "expertise", "approach", "results", "about", "contact"]
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -65% 0px", threshold: [0.05, 0.2, 0.5] },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("is-visible");
+    }), { threshold: 0.12 });
+    document.querySelectorAll(".scroll-reveal").forEach((el) => reveal.observe(el));
+    const spy = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target.id) setActive(visible.target.id);
+    }, { rootMargin: "-20% 0px -65% 0px", threshold: [0.05, 0.2] });
+    document.querySelectorAll("main section[id]").forEach((section) => spy.observe(section));
+    return () => { reveal.disconnect(); spy.disconnect(); };
   }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
-
   const closeMenu = () => setMenuOpen(false);
+  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
 
   return (
-    <div className="site-shell">
-      <div className="announcement-bar">
-        <div className="container announcement-inner">
-          <span className="pulse-dot" aria-hidden="true" />
-          <span>Northstar is accepting a limited number of Q4 transformation engagements.</span>
-          <a href="#contact">Start a conversation <ArrowUpRight size={13} /></a>
-        </div>
-      </div>
-
-      <header className="site-header">
-        <div className="container nav-wrap">
-          <a className="brand" href="#home" onClick={closeMenu} aria-label="Northstar Consulting home">
-            <span className="brand-mark"><span /><span /><span /></span>
-            <span className="brand-name">NORTHSTAR</span>
-            <span className="brand-sub">CONSULTING</span>
-          </a>
-          <nav className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Primary navigation">
-            {navItems.map((item) => (
-              <a key={item.href} className={activeSection === item.href.slice(1) ? "active" : ""} href={item.href} onClick={closeMenu}>
-                {item.label}
-              </a>
-            ))}
-            <a className="nav-cta" href="#contact" onClick={closeMenu}>Let&apos;s talk <ArrowUpRight size={15} /></a>
-          </nav>
-          <button className="menu-toggle" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+    <div className="creoture-mode">
+      <div className="grain" aria-hidden="true" />
+      <header className="reference-header">
+        <div className="ref-brand"><a href="#home">NORTHSTAR<span className="brand-pip">●</span></a><span className="brand-caption">CONSULTING</span></div>
+        <div className="system-status"><span className="status-pulse" /> SYSTEMS / OPERATIONAL <span className="status-divider">|</span> VER. 2026.Q4</div>
+        <button className="ref-menu" onClick={() => setMenuOpen((value) => !value)} aria-label="Toggle navigation" aria-expanded={menuOpen}>{menuOpen ? <X size={18} /> : <Menu size={18} />}</button>
+        <nav className={menuOpen ? "ref-nav is-open" : "ref-nav"}>
+          {navItems.map((item) => <a key={item.href} href={item.href} className={active === item.href.slice(1) ? "active" : ""} onClick={closeMenu}>{item.label}</a>)}
+          <a className="nav-arrow" href="#contact" onClick={closeMenu}>Let&apos;s talk <ArrowUpRight size={14} /></a>
+        </nav>
       </header>
 
       <main>
-        <section id="home" className="hero-section">
-          <div className="hero-grid-lines" aria-hidden="true" />
-          <div className="container hero-layout">
-            <div className="hero-copy reveal reveal-delay-1">
-              <div className="eyebrow"><span className="eyebrow-line" /> Independent consulting for consequential work</div>
-              <h1>Make the <em>next</em> move<br />with confidence.</h1>
-              <p className="hero-lede">Northstar helps ambitious organizations turn strategic uncertainty into measurable progress — with the clarity to decide and the capability to deliver.</p>
-              <div className="hero-actions">
-                <a className="button button-primary" href="#contact">Book a consultation <ArrowUpRight size={17} /></a>
-                <a className="text-link" href="#results">See our work <ArrowRight size={16} /></a>
-              </div>
-              <div className="hero-note"><ShieldCheck size={15} /> Senior-led, hands-on, built for the real world</div>
-            </div>
-            <div className="hero-visual reveal reveal-delay-2" aria-label="Northstar network visualization">
-              <div className="visual-caption"><span>FIG. 01 / NORTHSTAR METHOD</span><span>01—04</span></div>
-              <div className="orbit orbit-one" />
-              <div className="orbit orbit-two" />
-              <div className="orbit orbit-three" />
-              <div className="visual-core"><span className="core-label">NORTH<br />STAR</span><div className="core-cross" /></div>
-              <div className="node node-a"><span>STRATEGY</span></div>
-              <div className="node node-b"><span>DELIVERY</span></div>
-              <div className="node node-c"><span>CAPABILITY</span></div>
-              <div className="node node-d"><span>IMPACT</span></div>
-              <div className="visual-axis axis-x" /><div className="visual-axis axis-y" />
-              <div className="visual-footer"><span>CLARITY</span><ArrowRight size={13} /><span>CAPABILITY</span><ArrowRight size={13} /><span>RESULTS</span></div>
-            </div>
-          </div>
-          <div className="container hero-bottomline">
-            <div className="scroll-cue"><span className="scroll-line" /> Scroll to explore</div>
-            <div className="hero-meta"><span>NYC / LDN / REMOTE</span><span>EST. 2016</span><span>© 2024 NORTHSTAR</span></div>
+        <section id="home" className="ref-hero ref-section">
+          <div className="ref-container hero-ref-grid">
+            <div className="hero-micro"><span>INDEPENDENT CONSULTING</span><span>EST. 2016</span></div>
+            <div className="hero-side-note">STRATEGY<br />SYSTEMS<br />GROWTH</div>
+            <div className="hero-title-wrap scroll-reveal"><p className="display-eyebrow">BUILT FOR CONSEQUENTIA‍L WORK</p><h1>NORTH<span className="purple-text">.</span><br />STAR</h1></div>
+            <div className="hero-message scroll-reveal"><p>If your next move<br />feels <span className="purple-text">unclear</span> —<br /><span className="dim-text">that&apos;s the problem.</span></p><div className="hero-rule" /><p className="hero-sub">We make strategy, technology, and operating models connect.</p></div>
+            <div className="hero-stats"><span><strong>30+</strong> ENGAGEMENTS</span><span><strong>8</strong> INDUSTRIES</span><span><strong>3</strong> CONTINENTS</span></div>
+            <div className="hero-actions"><a className="ref-button" href="#contact">START A CONVERSATION <ArrowUpRight size={15} /></a><a className="ref-text-link" href="#results">VIEW SELECTED WORK <ArrowDown size={14} /></a></div>
+            <a className="scroll-prompt" href="#approach"><span className="scroll-circle"><ArrowDown size={14} /></span> SCROLL TO EXPLORE</a>
           </div>
         </section>
 
-        <section className="trust-strip">
-          <div className="container trust-inner">
-            <span className="trust-label">Trusted by teams at</span>
-            <div className="client-logos"><span>arc<span className="logo-accent">/</span>line</span><span>HARBOR<span className="logo-light">&amp; CO</span></span><span>north<span className="logo-accent">+</span>field</span><span>MERIDIAN</span><span className="logo-serif">Morrow</span></div>
+        <div className="marquee-band" aria-hidden="true"><div className="marquee-track"><span>CLARITY OVER NOISE</span><i>✦</i><span>DECISIONS THAT MOVE</span><i>✦</i><span>BUILT TO DELIVER</span><i>✦</i><span>CLARITY OVER NOISE</span><i>✦</i><span>DECISIONS THAT MOVE</span><i>✦</i></div></div>
+
+        <section id="approach" className="ref-section approach-ref-section">
+          <div className="ref-container">
+            <p className="section-code">/ 01 — OUR APPROACH</p>
+            <div className="approach-intro scroll-reveal"><h2>WE MAKE<br /><span className="purple-text">THE NEXT MOVE</span><br />VISIBLE.</h2><p>We make it clear, practical, and better.</p></div>
+            <div className="approach-layout"><div className="approach-art"><div className="art-orbit art-orbit-a" /><div className="art-orbit art-orbit-b" /><div className="art-core">N<span>↗</span></div><div className="art-label art-label-a">DECISION</div><div className="art-label art-label-b">SYSTEM</div><div className="art-label art-label-c">MOMENTUM</div></div><div className="approach-copy"><p className="quote-large">You may not notice it.<br /><span>But you&apos;ll feel it.</span></p><p className="muted-copy">The right strategy creates a different kind of energy: less explaining, more deciding. Less motion, more movement.</p><div className="est-line">NORTHSTAR — EST. 2016</div></div></div>
           </div>
         </section>
 
-        <section id="expertise" className="section section-light expertise-section">
-          <div className="container">
-            <div className="section-heading split-heading reveal">
-              <div><p className="section-kicker">01 / What we do</p><h2>Clarity for the<br /><em>hard parts.</em></h2></div>
-              <p className="section-intro">We work where the stakes are high, the path is unclear, and progress cannot wait. Our teams bring strategy and execution together from day one.</p>
-            </div>
-            <div className="services-grid">
-              {services.map((service, index) => {
-                const Icon = service.icon;
-                return <article className="service-card reveal" style={{ animationDelay: `${index * 80}ms` }} key={service.number}>
-                  <div className="card-topline"><span>{service.number}</span><Icon size={22} strokeWidth={1.5} /></div>
-                  <h3>{service.title}</h3><p>{service.text}</p>
-                  <div className="tag-list">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <a className="card-arrow" href="#contact" aria-label={`Explore ${service.title}`}><ArrowUpRight size={17} /></a>
-                </article>;
-              })}
-            </div>
-          </div>
+        <section id="expertise" className="ref-section services-ref-section">
+          <div className="ref-container"><p className="section-code">/ 02 — EXPERTISE</p><div className="section-title-row scroll-reveal"><h2>SERVICES<span className="purple-text">.</span></h2><p>Five ways we help ambitious teams move from uncertainty to outcomes.</p></div><div className="service-list">{services.map(([number, title, copy]) => <a className="service-row scroll-reveal" href="#contact" key={number}><span className="service-num">{number}</span><h3>{title}</h3><span className="service-copy">{copy}</span><ArrowUpRight className="service-arrow" size={20} /></a>)}</div></div>
         </section>
 
-        <section id="approach" className="section section-ink approach-section">
-          <div className="container">
-            <div className="section-heading split-heading light-heading reveal">
-              <div><p className="section-kicker">02 / How we work</p><h2>A method made for<br /><em>momentum.</em></h2></div>
-              <p className="section-intro">No black boxes. No hand-off decks. We build the answer with the people who will carry it forward — and stay close enough to make it stick.</p>
-            </div>
-            <div className="method-grid">
-              {steps.map((step, index) => <article className="method-step reveal" style={{ animationDelay: `${index * 70}ms` }} key={step.number}>
-                <div className="method-number">{step.number}</div><div className="method-connector" />
-                <h3>{step.title}</h3><p>{step.text}</p>
-              </article>)}
-            </div>
-            <div className="approach-foot"><span><Sparkles size={15} /> Senior attention from first question to last mile</span><a href="#contact">Our approach in action <ArrowUpRight size={15} /></a></div>
-          </div>
+        <div className="marquee-band marquee-band-purple" aria-hidden="true"><div className="marquee-track marquee-reverse"><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i></div></div>
+
+        <section id="results" className="ref-section results-ref-section">
+          <div className="ref-container"><p className="section-code">/ 03 — SELECTED WORK</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">OUTCOME</span><span className="muted-text">.</span></h2><p>Illustrative case studies — replace with approved client work and metrics before launch.</p></div><div className="result-grid">{cases.map(([category, client, title, outcome], index) => <article className="result-card scroll-reveal" key={client}><div className="result-visual"><span className="result-index">0{index + 1}</span><div className="result-lines" /><span className="result-category">{category}</span></div><p className="result-client">{client}</p><h3>{title}</h3><div className="result-footer"><span>OUTCOME</span><strong>{outcome}</strong></div></article>)}</div></div>
         </section>
 
-        <section id="results" className="section section-light results-section">
-          <div className="container">
-            <div className="section-heading split-heading reveal"><div><p className="section-kicker">03 / Selected results</p><h2>Work that moves<br /><em>the numbers.</em></h2></div><p className="section-intro">Illustrative client stories below. Replace these placeholders with approved case studies, outcomes, and client names before publishing.</p></div>
-            <div className="cases-grid">
-              {cases.map((item, index) => <article className={`case-card ${item.tone} reveal`} style={{ animationDelay: `${index * 80}ms` }} key={item.client}>
-                <div className="case-top"><span>{item.label}</span><ArrowUpRight size={18} /></div>
-                <div className="case-number">0{index + 1}</div>
-                <p className="case-client">{item.client}</p><h3>{item.title}</h3>
-                <div className="case-detail"><span>THE CHALLENGE</span><p>{item.problem}</p></div>
-                <div className="case-outcome"><span>OUTCOME</span><strong>{item.outcome}</strong><p>{item.detail}</p></div>
-              </article>)}
-            </div>
-            <div className="results-note"><span className="note-mark">+</span><p>Placeholder content is clearly marked for easy replacement with approved client work.</p><a className="text-link" href="#contact">Discuss your challenge <ArrowRight size={16} /></a></div>
-          </div>
-        </section>
+        <section className="ref-section why-ref-section"><div className="ref-container"><p className="section-code">/ 04 — WHY NORTHSTAR</p><div className="why-layout"><h2 className="scroll-reveal">NOT JUST<br /><span className="purple-text">ADVICE.</span><br />THE SYSTEM<br />TO MOVE IT.</h2><div className="why-list">{[["01", "SENIOR BY DESIGN", "The people in the room are the people doing the work."], ["02", "OUTCOMES OVER THEATRE", "We measure progress in decisions made and products shipped."], ["03", "CAPABILITY LEFT BEHIND", "The best engagement makes your team stronger after we go."]].map(([num, title, copy]) => <div className="why-row scroll-reveal" key={num}><span>{num}</span><div><h3>{title}</h3><p>{copy}</p></div><Check size={16} /></div>)}</div></div></div></section>
 
-        <section className="section differentiator-section">
-          <div className="container differentiator-grid">
-            <div className="difference-statement reveal"><p className="section-kicker">04 / Why Northstar</p><h2>Experience is only useful when it changes <em>what happens next.</em></h2><a className="button button-light" href="#about">Meet the team <ArrowUpRight size={16} /></a></div>
-            <div className="difference-list">
-              {[{ icon: Target, title: "Senior by design", text: "The people in the room are the people doing the work. No layers between insight and action." }, { icon: Network, title: "One connected view", text: "We connect the strategic, operational, and technical so the answer survives contact with reality." }, { icon: BarChart3, title: "Outcomes over theatre", text: "We measure progress in decisions made, products shipped, and capability left behind." }].map((item, index) => { const Icon = item.icon; return <div className="difference-item reveal" style={{ animationDelay: `${index * 70}ms` }} key={item.title}><Icon size={23} strokeWidth={1.5} /><div><h3>{item.title}</h3><p>{item.text}</p></div></div>; })}
-            </div>
-          </div>
-        </section>
+        <section id="about" className="ref-section about-ref-section"><div className="ref-container"><p className="section-code">/ 05 — THE PEOPLE</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">TEAM</span><span className="muted-text">.</span></h2><p>Small enough to care deeply. Experienced enough to know what it takes.</p></div><div className="team-list">{team.map(([initials, name, role, copy], index) => <article className="team-row scroll-reveal" key={name}><div className={`team-avatar team-avatar-${index}`}><span>{initials}</span><div /></div><div><p className="team-role">{role}</p><h3>{name}</h3><p className="team-copy">{copy}</p></div><ArrowUpRight size={20} /></article>)}</div></div></section>
 
-        <section id="about" className="section section-light about-section">
-          <div className="container">
-            <div className="section-heading split-heading reveal"><div><p className="section-kicker">05 / The people</p><h2>Small enough to<br /><em>care deeply.</em></h2></div><p className="section-intro">A senior team with operator instincts, consulting discipline, and the humility to start with your context. Team bios below are placeholders for your final profiles.</p></div>
-            <div className="team-grid">
-              {team.map((person, index) => <article className="person-card reveal" style={{ animationDelay: `${index * 70}ms` }} key={person.name}><div className="avatar-placeholder" style={{ "--avatar-accent": person.accent } as CSSProperties}><span>{person.initials}</span><div className="avatar-grid" /></div><p className="person-role">{person.role}</p><h3>{person.name}</h3><p>{person.bio}</p><a href="#contact" className="person-link">View profile <ArrowUpRight size={14} /></a></article>)}
-            </div>
-          </div>
-        </section>
+        <section className="testimonial-ref-section"><div className="ref-container testimonial-grid"><span className="quote-mark">“</span><blockquote>Northstar brought strategic altitude and sleeves-rolled-up delivery. We left with a plan our teams actually believed in.</blockquote><div><span className="section-code">PLACEHOLDER TESTIMONIAL</span><p>Client name<br /><span>Role, Company</span></p></div></div></section>
 
-        <section className="quote-section">
-          <div className="container quote-grid">
-            <div className="quote-label"><Quote size={28} strokeWidth={1.3} /><span>Client perspective<br />PLACEHOLDER QUOTE</span></div>
-            <blockquote>“Northstar brought the rare combination of strategic altitude and sleeves-rolled-up delivery. We left with a plan our teams actually believed in — and a way to make it happen.”</blockquote>
-            <div className="quote-attribution"><span className="attribution-line" /><div><strong>Client name</strong><span>Role, Company</span></div><span className="quote-index">01 / 03</span></div>
-          </div>
-        </section>
+        <section className="ref-section engagement-ref-section"><div className="ref-container"><p className="section-code">/ 06 — WAYS TO WORK TOGETHER</p><div className="section-title-row scroll-reveal"><h2>CHOOSE<br /><span className="purple-text">THE SHAPE</span><span className="muted-text">.</span></h2><p>Focused when you need an answer. Embedded when you need momentum.</p></div><div className="engagement-list">{[["FOCUSED PROJECT", "4—12 WEEKS", "A defined decision, transformation sprint, or delivery challenge."], ["EMBEDDED PARTNERSHIP", "3—9 MONTHS", "Senior capacity alongside your team from plan through execution."], ["EXECUTIVE ADVISORY", "ONGOING", "An experienced perspective in the room when it matters."]].map(([name, duration, copy], index) => <div className={`engagement-row ${index === 1 ? "is-highlighted" : ""} scroll-reveal`} key={name}><span>0{index + 1}</span><h3>{name}</h3><em>{duration}</em><p>{copy}</p><ArrowUpRight size={18} /></div>)}</div></div></section>
 
-        <section className="section section-light engagement-section">
-          <div className="container">
-            <div className="section-heading reveal"><p className="section-kicker">06 / Ways to work together</p><h2>Choose the shape<br /><em>that fits.</em></h2></div>
-            <div className="models-grid">
-              {models.map((model, index) => <article className={`model-card ${index === 1 ? "is-featured" : ""} reveal`} style={{ animationDelay: `${index * 70}ms` }} key={model.name}>{index === 1 && <span className="featured-label">MOST COMMON</span>}<div className="model-index">0{index + 1}</div><h3>{model.name}</h3><span className="model-duration"><Clock3 size={14} /> {model.duration}</span><p>{model.text}</p><div className="model-best"><Check size={15} /> {model.best}</div><a href="#contact" className="model-link">Explore model <ArrowUpRight size={16} /></a></article>)}
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="contact-section">
-          <div className="container contact-grid">
-            <div className="contact-copy reveal"><p className="section-kicker light-kicker">07 / Start here</p><h2>Let&apos;s find the<br /><em>next right move.</em></h2><p>Tell us what is changing, what is stuck, or what you are trying to make possible. We will come back with a useful first conversation — not a pitch.</p><div className="contact-details"><a href="mailto:hello@northstar.consulting"><Mail size={16} /> hello@northstar.consulting</a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ExternalLink size={12} /></a><span><MapPin size={16} /> New York · London · Remote</span></div></div>
-            <form className="contact-form reveal reveal-delay-1" onSubmit={handleSubmit}>
-              {submitted ? <div className="form-success"><div className="success-icon"><Check size={22} /></div><p className="section-kicker light-kicker">Message received</p><h3>We&apos;ll be in touch shortly.</h3><p>Thanks for reaching out. This demo form is ready to connect to your preferred inbox or CRM.</p><button className="button button-outline-light" type="button" onClick={() => setSubmitted(false)}>Send another message</button></div> : <><div className="form-row"><label>Name<input name="name" required placeholder="Your name" /></label><label>Work email<input name="email" type="email" required placeholder="you@company.com" /></label></div><label>What can we help with?<select name="topic" defaultValue=""><option value="" disabled>Select a focus area</option><option>Strategy &amp; transformation</option><option>Digital operations</option><option>Technology delivery</option><option>Executive advisory</option></select></label><label>Tell us a little more<textarea name="message" required placeholder="A sentence or two is plenty." rows={4} /></label><button className="button button-primary form-submit" type="submit">Start the conversation <ArrowUpRight size={17} /></button><p className="form-disclaimer">By submitting, you agree to be contacted about your inquiry. No sales sequence, ever.</p></>}
-            </form>
-          </div>
-        </section>
+        <section id="contact" className="ref-section contact-ref-section"><div className="ref-container contact-ref-grid"><div className="contact-heading scroll-reveal"><p className="section-code">/ GET IN TOUCH</p><h2>LET&apos;S BUILD<br /><span className="purple-text">WHAT&apos;S NEXT.</span></h2><p>Tell us what is changing, what is stuck, or what you are trying to make possible.</p><div className="contact-links"><a href="mailto:hello@northstar.consulting">hello@northstar.consulting <ArrowUpRight size={16} /></a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LINKEDIN ↗</a></div></div><form className="ref-form scroll-reveal" onSubmit={submit}>{submitted ? <div className="form-thanks"><span className="purple-text">✓</span><p className="section-code">MESSAGE RECEIVED</p><h3>We&apos;ll be in touch.</h3><p>This demo form is ready to connect to your inbox or CRM.</p><button type="button" onClick={() => setSubmitted(false)}>SEND ANOTHER <ArrowUpRight size={14} /></button></div> : <><label>YOUR NAME<input name="name" required placeholder="Name" /></label><label>WORK EMAIL<input name="email" type="email" required placeholder="you@company.com" /></label><label>WHAT CAN WE HELP WITH?<select name="topic" defaultValue=""><option value="" disabled>Select a focus area</option><option>Strategy &amp; transformation</option><option>Digital operations</option><option>Technology delivery</option><option>Executive advisory</option></select></label><label>A LITTLE MORE<textarea name="message" required placeholder="A sentence or two is plenty." rows={4} /></label><button className="ref-button form-button" type="submit">SEND MESSAGE <ArrowUpRight size={15} /></button></>}</form></div></section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-top"><a className="brand footer-brand" href="#home"><span className="brand-mark"><span /><span /><span /></span><span className="brand-name">NORTHSTAR</span></a><div className="footer-links"><a href="#expertise">Expertise</a><a href="#approach">Approach</a><a href="#results">Results</a><a href="#contact">Contact</a></div><a className="back-top" href="#home">Back to top <ArrowDownRight size={15} /></a></div><div className="container footer-bottom"><span>© 2024 Northstar Consulting. Placeholder site content.</span><span>Privacy <span className="footer-divider">/</span> Terms</span><span>Built for consequential work.</span></div></footer>
+      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo" href="#home">NORTHSTAR<span className="purple-text">●</span></a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:hello@northstar.consulting">hello@northstar.consulting</a><a href="tel:+12125550186">+1 212 555 0186</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Northstar Consulting. All rights reserved.</span><span>BUILT FOR CONSEQUENTI‍AL WORK.</span><span>NYC · LDN · REMOTE</span></div></footer>
     </div>
   );
 }
