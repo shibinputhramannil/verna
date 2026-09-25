@@ -24,9 +24,9 @@ const steps = [
 ];
 
 const cases = [
-  ["OPERATING MODEL", "Global logistics group", "One connected network", "22% faster planning cycles"],
-  ["PRODUCT DELIVERY", "Series C software company", "A portfolio built for the next stage", "3× release confidence"],
-  ["AUTOMATION", "National financial institution", "Control without the drag", "40% less manual effort"],
+  ["OPERATING MODEL", "Global logistics group", "One connected network", "22% faster planning cycles", "/case-operating-model.jpg"],
+  ["PRODUCT DELIVERY", "Series C software company", "A portfolio built for the next stage", "3× release confidence", "/case-product-delivery.jpg"],
+  ["AUTOMATION", "National financial institution", "Control without the drag", "40% less manual effort", "/case-automation.jpg"],
 ];
 
 const team = [
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="ref-container">
             <p className="section-code">/ 01 — OUR APPROACH</p>
             <div className="approach-intro scroll-reveal"><h2>WE MAKE<br /><span className="purple-text">THE NEXT MOVE</span><br />VISIBLE.</h2><p>We make it clear, practical, and better.</p></div>
-            <div className="approach-layout"><div className="approach-art"><img className="approach-reference-image" src="/manus-storage/verna-orbital_3465d8a7.webp" alt="Orbital system diagram showing decision, system, and momentum around a central node." loading="lazy" decoding="async" width="842" height="606" /><div className="art-orbit art-orbit-a" /><div className="art-orbit art-orbit-b" /><div className="art-core">N<span>↗</span></div><div className="art-label art-label-a">DECISION</div><div className="art-label art-label-b">SYSTEM</div><div className="art-label art-label-c">MOMENTUM</div></div><div className="approach-copy"><p className="quote-large">You may not notice it.<br /><span>But you&apos;ll feel it.</span></p><p className="muted-copy">The right strategy creates a different kind of energy: less explaining, more deciding. Less motion, more movement.</p><div className="est-line">VERNA — EST. 2016</div></div></div>
+            <div className="approach-layout"><div className="approach-art"><img className="approach-reference-image" src="/verna-consulting.jpg" alt="Laptop displaying strategy analytics dashboard with charts and metrics on a dark desk." loading="lazy" decoding="async" width="842" height="606" /><div className="art-orbit art-orbit-a" /><div className="art-orbit art-orbit-b" /><div className="art-core">N<span>↗</span></div><div className="art-label art-label-a">DECISION</div><div className="art-label art-label-b">SYSTEM</div><div className="art-label art-label-c">MOMENTUM</div></div><div className="approach-copy"><p className="quote-large">You may not notice it.<br /><span>But you&apos;ll feel it.</span></p><p className="muted-copy">The right strategy creates a different kind of energy: less explaining, more deciding. Less motion, more movement.</p><div className="est-line">VERNA — EST. 2016</div></div></div>
           </div>
         </section>
 
@@ -99,7 +99,7 @@ export default function Home() {
         <div className="marquee-band marquee-band-purple" aria-hidden="true"><div className="marquee-track marquee-reverse"><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i></div></div>
 
         <section id="results" className="ref-section results-ref-section">
-          <div className="ref-container"><p className="section-code">/ 03 — SELECTED WORK</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">OUTCOME</span><span className="muted-text">.</span></h2><p>Illustrative case studies — replace with approved client work and metrics before launch.</p></div><div className="result-grid">{cases.map(([category, client, title, outcome], index) => <article className="result-card scroll-reveal" key={client}><div className="result-visual"><span className="result-index">0{index + 1}</span><div className="result-lines" /><span className="result-category">{category}</span></div><p className="result-client">{client}</p><h3>{title}</h3><div className="result-footer"><span>OUTCOME</span><strong>{outcome}</strong></div></article>)}</div></div>
+          <div className="ref-container"><p className="section-code">/ 03 — SELECTED WORK</p><div className="section-title-row scroll-reveal"><h2>THE<br /><span className="purple-text">OUTCOME</span><span className="muted-text">.</span></h2><p>Illustrative case studies — replace with approved client work and metrics before launch.</p></div><div className="result-grid">{cases.map(([category, client, title, outcome, image], index) => <article className="result-card scroll-reveal" key={client}><div className="result-visual"><img src={image} alt={`${category} — ${title}`} className="result-visual-img" loading="lazy" decoding="async" /><span className="result-index">0{index + 1}</span><div className="result-lines" /><span className="result-category">{category}</span></div><p className="result-client">{client}</p><h3>{title}</h3><div className="result-footer"><span>OUTCOME</span><strong>{outcome}</strong></div></article>)}</div></div>
         </section>
 
         <section className="ref-section why-ref-section"><div className="ref-container"><p className="section-code">/ 04 — WHY VERNA</p><div className="why-layout"><h2 className="scroll-reveal">NOT JUST<br /><span className="purple-text">ADVICE.</span><br />THE SYSTEM<br />TO MOVE IT.</h2><div className="why-list">{[["01", "SENIOR BY DESIGN", "The people in the room are the people doing the work."], ["02", "OUTCOMES OVER THEATRE", "We measure progress in decisions made and products shipped."], ["03", "CAPABILITY LEFT BEHIND", "The best engagement makes your team stronger after we go."]].map(([num, title, copy]) => <div className="why-row scroll-reveal" key={num}><span>{num}</span><div><h3>{title}</h3><p>{copy}</p></div><Check size={16} /></div>)}</div></div></div></section>
