@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X, Loader2 } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -38,6 +38,8 @@ const team = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [active, setActive] = useState("home");
 
   useEffect(() => {
@@ -54,7 +56,43 @@ export default function Home() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
-  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (accessKey) {
+      formData.append("access_key", accessKey);
+      formData.append("subject", "New Client Inquiry - Verna Consulting");
+      formData.append("from_name", "Verna Website");
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+        if (data.success) {
+          setSubmitted(true);
+          form.reset();
+        } else {
+          setErrorMessage(data.message || "Failed to send message. Please email farha.najameel69@gmail.com directly.");
+        }
+      } catch {
+        setErrorMessage("Network error. Please reach out via WhatsApp or email directly.");
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      // Fallback if access key not yet set in .env
+      setSubmitted(true);
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="creoture-mode">
@@ -110,7 +148,74 @@ export default function Home() {
 
         <section className="ref-section engagement-ref-section"><div className="ref-container"><p className="section-code">/ 06 — WAYS TO WORK TOGETHER</p><div className="section-title-row scroll-reveal"><h2>CHOOSE<br /><span className="purple-text">THE SHAPE</span><span className="muted-text">.</span></h2><p>Focused when you need an answer. Embedded when you need momentum.</p></div><div className="engagement-list">{[["FOCUSED PROJECT", "4—12 WEEKS", "A defined decision, transformation sprint, or delivery challenge."], ["EMBEDDED PARTNERSHIP", "3—9 MONTHS", "Senior capacity alongside your team from plan through execution."], ["EXECUTIVE ADVISORY", "ONGOING", "An experienced perspective in the room when it matters."]].map(([name, duration, copy], index) => <div className={`engagement-row ${index === 1 ? "is-highlighted" : ""} scroll-reveal`} key={name}><span>0{index + 1}</span><h3>{name}</h3><em>{duration}</em><p>{copy}</p><ArrowUpRight size={18} /></div>)}</div></div></section>
 
-        <section id="contact" className="ref-section contact-ref-section"><div className="ref-container contact-ref-grid"><div className="contact-heading scroll-reveal"><p className="section-code">/ CONTACT US</p><h2>LET&apos;S BUILD<br /><span className="purple-text">WHAT&apos;S NEXT.</span></h2><p>Tell us what is changing, what is stuck, or what you are trying to make possible.</p><div className="contact-links"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com <ArrowUpRight size={16} /></a><a href="tel:+918921691154">+91 89216 91154 <ArrowUpRight size={16} /></a><a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={16} /></a></div></div><form className="ref-form scroll-reveal" onSubmit={submit}>{submitted ? <div className="form-thanks"><span className="purple-text">✓</span><p className="section-code">MESSAGE RECEIVED</p><h3>We&apos;ll be in touch.</h3><p>Our team will get back to you shortly.</p><button type="button" onClick={() => setSubmitted(false)}>SEND ANOTHER <ArrowUpRight size={14} /></button></div> : <><label>YOUR NAME<input name="name" required placeholder="Name" /></label><label>WORK EMAIL<input name="email" type="email" required placeholder="you@company.com" /></label><label>WHAT CAN WE HELP WITH?<select name="topic" defaultValue=""><option value="" disabled>Select a focus area</option><option>Strategy &amp; transformation</option><option>Digital operations</option><option>Technology delivery</option><option>Executive advisory</option></select></label><label>A LITTLE MORE<textarea name="message" required placeholder="A sentence or two is plenty." rows={4} /></label><button className="ref-button form-button" type="submit">SEND MESSAGE <ArrowUpRight size={15} /></button></>}</form></div></section>
+        <section id="contact" className="ref-section contact-ref-section">
+          <div className="ref-container contact-ref-grid">
+            <div className="contact-heading scroll-reveal">
+              <p className="section-code">/ CONTACT US</p>
+              <h2>LET&apos;S BUILD<br /><span className="purple-text">WHAT&apos;S NEXT.</span></h2>
+              <p>Tell us what is changing, what is stuck, or what you are trying to make possible.</p>
+              <div className="contact-links">
+                <a href="https://wa.me/918921691154?text=Hi%20Verna%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noreferrer">
+                  WHATSAPP CHAT (+91 89216 91154) <ArrowUpRight size={16} />
+                </a>
+                <a href="mailto:farha.najameel69@gmail.com">
+                  farha.najameel69@gmail.com <ArrowUpRight size={16} />
+                </a>
+                <a href="tel:+918921691154">
+                  +91 89216 91154 <ArrowUpRight size={16} />
+                </a>
+                <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
+                  6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </div>
+            <form className="ref-form scroll-reveal" onSubmit={submit}>
+              {submitted ? (
+                <div className="form-thanks">
+                  <span className="purple-text">✓</span>
+                  <p className="section-code">MESSAGE RECEIVED</p>
+                  <h3>We&apos;ll be in touch.</h3>
+                  <p>Our team will get back to you shortly at your email.</p>
+                  <button type="button" onClick={() => { setSubmitted(false); setErrorMessage(""); }}>
+                    SEND ANOTHER <ArrowUpRight size={14} />
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+                  <label>YOUR NAME<input name="name" required placeholder="Name" /></label>
+                  <label>WORK EMAIL<input name="email" type="email" required placeholder="you@company.com" /></label>
+                  <label>WHAT CAN WE HELP WITH?
+                    <select name="topic" defaultValue="">
+                      <option value="" disabled>Select a focus area</option>
+                      <option>Strategy &amp; transformation</option>
+                      <option>Digital operations</option>
+                      <option>Technology delivery</option>
+                      <option>Executive advisory</option>
+                    </select>
+                  </label>
+                  <label>A LITTLE MORE<textarea name="message" required placeholder="A sentence or two is plenty." rows={4} /></label>
+                  {errorMessage && (
+                    <p style={{ color: "#ff6b6b", fontSize: "11px", fontFamily: "var(--mono)", margin: "8px 0" }}>
+                      {errorMessage}
+                    </p>
+                  )}
+                  <button className="ref-button form-button" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="animate-spin" size={15} style={{ marginRight: 6 }} /> SENDING...
+                      </>
+                    ) : (
+                      <>
+                        SEND MESSAGE <ArrowUpRight size={15} />
+                      </>
+                    )}
+                  </button>
+                </>
+              )}
+            </form>
+          </div>
+        </section>
       </main>
 
       <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo" href="#home">VERNA<span className="purple-text">●</span></a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><span>BUILT FOR CONSEQUENTI‍AL WORK.</span><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
