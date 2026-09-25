@@ -30,9 +30,9 @@ const cases = [
 ];
 
 const team = [
-  ["MC", "Maya Chen", "MANAGING PARTNER", "Former COO. Turns ambiguity into a plan people can actually carry."],
-  ["JR", "Jonas Reed", "PARTNER, TECHNOLOGY", "Product operator. Turns strategy into systems teams can ship and sustain."],
-  ["SK", "Sara Khalil", "PRINCIPAL, OPERATIONS", "Process architect. Finds the leverage hiding inside the day-to-day."],
+  ["FN", "Farha Najameel", "FOUNDER", "Visionary leader. Turns bold ideas into businesses that move."],
+  ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results."],
+  ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences."],
 ];
 
 export default function Home() {
