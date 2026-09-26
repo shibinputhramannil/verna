@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X, Loader2 } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X, Loader2, Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -164,19 +164,22 @@ export default function Home() {
               <p>Tell us what is changing, what is stuck, or what you are trying to make possible.</p>
               <div className="contact-links">
                 <a href="https://wa.me/918921691154?text=Hi%20Verna%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noreferrer">
-                  WHATSAPP CHAT (+91 89216 91154) <ArrowUpRight size={16} />
+                  <MessageCircle size={15} className="contact-icon" /> WHATSAPP (+91 89216 91154) <ArrowUpRight size={14} />
                 </a>
                 <a href="mailto:farha.najameel69@gmail.com">
-                  farha.najameel69@gmail.com <ArrowUpRight size={16} />
+                  <Mail size={15} className="contact-icon" /> farha.najameel69@gmail.com <ArrowUpRight size={14} />
                 </a>
                 <a href="tel:+918921691154">
-                  +91 89216 91154 <ArrowUpRight size={16} />
+                  <Phone size={15} className="contact-icon" /> +91 89216 91154 <ArrowUpRight size={14} />
                 </a>
                 <a href="https://www.instagram.com/farha_najameel" target="_blank" rel="noreferrer">
-                  INSTAGRAM (farha_najameel) <ArrowUpRight size={16} />
+                  <Instagram size={15} className="contact-icon" /> INSTAGRAM (@farha_najameel) <ArrowUpRight size={14} />
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+                  <Linkedin size={15} className="contact-icon" /> LINKEDIN <ArrowUpRight size={14} />
                 </a>
                 <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
-                  6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={16} />
+                  <MapPin size={15} className="contact-icon" /> 6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={14} />
                 </a>
               </div>
             </div>
