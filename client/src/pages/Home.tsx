@@ -39,6 +39,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consentAgreed, setConsentAgreed] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [active, setActive] = useState("home");
 
@@ -58,9 +59,14 @@ export default function Home() {
   const closeMenu = () => setMenuOpen(false);
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage("");
 
+    if (!consentAgreed) {
+      setErrorMessage("Please accept the Terms & Conditions and Privacy Policy to continue.");
+      return;
+    }
+
+    setIsSubmitting(true);
     const form = event.currentTarget;
     const formData = new FormData(form);
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
@@ -78,6 +84,7 @@ export default function Home() {
         const data = await response.json();
         if (data.success) {
           setSubmitted(true);
+          setConsentAgreed(false);
           form.reset();
         } else {
           setErrorMessage(data.message || "Failed to send message. Please email farha.najameel69@gmail.com directly.");
@@ -90,6 +97,7 @@ export default function Home() {
     } else {
       // Fallback if access key not yet set in .env
       setSubmitted(true);
+      setConsentAgreed(false);
       setIsSubmitting(false);
     }
   };
@@ -176,7 +184,7 @@ export default function Home() {
                   <p className="section-code">MESSAGE RECEIVED</p>
                   <h3>We&apos;ll be in touch.</h3>
                   <p>Our team will get back to you shortly at your email.</p>
-                  <button type="button" onClick={() => { setSubmitted(false); setErrorMessage(""); }}>
+                  <button type="button" onClick={() => { setSubmitted(false); setConsentAgreed(false); setErrorMessage(""); }}>
                     SEND ANOTHER <ArrowUpRight size={14} />
                   </button>
                 </div>
@@ -195,11 +203,42 @@ export default function Home() {
                     </select>
                   </label>
                   <label>A LITTLE MORE<textarea name="message" required placeholder="A sentence or two is plenty." rows={4} /></label>
+
+                  <div className="consent-checkbox-wrapper">
+                    <label className="consent-checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        id="consent-checkbox"
+                        checked={consentAgreed}
+                        onChange={(e) => {
+                          setConsentAgreed(e.target.checked);
+                          if (e.target.checked) setErrorMessage("");
+                        }}
+                        className="consent-checkbox-input"
+                      />
+                      <span className={`consent-custom-box ${consentAgreed ? "is-checked" : ""}`} aria-hidden="true">
+                        {consentAgreed && <Check size={12} strokeWidth={3} />}
+                      </span>
+                      <span className="consent-text">
+                        I agree to the{" "}
+                        <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                          Terms &amp; Conditions
+                        </a>{" "}
+                        and acknowledge the{" "}
+                        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                          Privacy Policy
+                        </a>.
+                      </span>
+                    </label>
+                  </div>
+
                   {errorMessage && (
-                    <p style={{ color: "#ff6b6b", fontSize: "11px", fontFamily: "var(--mono)", margin: "8px 0" }}>
+                    <p className="form-error-msg">
                       {errorMessage}
                     </p>
                   )}
+
                   <button className="ref-button form-button" type="submit" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
@@ -211,11 +250,6 @@ export default function Home() {
                       </>
                     )}
                   </button>
-                  <p className="form-legal-note">
-                    By submitting, you agree to our{" "}
-                    <a href="/privacy-policy">Privacy Policy</a> and{" "}
-                    <a href="/terms-and-conditions">Terms &amp; Conditions</a>.
-                  </p>
                 </>
               )}
             </form>
