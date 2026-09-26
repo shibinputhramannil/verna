@@ -211,6 +211,11 @@ export default function Home() {
                       </>
                     )}
                   </button>
+                  <p className="form-legal-note">
+                    By submitting, you agree to our{" "}
+                    <a href="/privacy-policy">Privacy Policy</a> and{" "}
+                    <a href="/terms-and-conditions">Terms &amp; Conditions</a>.
+                  </p>
                 </>
               )}
             </form>
@@ -218,7 +223,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo" href="#home">VERNA</a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><span>BUILT FOR CONSEQUENTI‍AL WORK</span><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
+      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo" href="#home">VERNA</a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><div className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
     </div>
   );
 }
