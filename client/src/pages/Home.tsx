@@ -172,6 +172,9 @@ export default function Home() {
                 <a href="tel:+918921691154">
                   +91 89216 91154 <ArrowUpRight size={16} />
                 </a>
+                <a href="https://www.instagram.com/farha_najameel" target="_blank" rel="noreferrer">
+                  INSTAGRAM (farha_najameel) <ArrowUpRight size={16} />
+                </a>
                 <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
                   6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={16} />
                 </a>
