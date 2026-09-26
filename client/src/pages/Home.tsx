@@ -165,7 +165,7 @@ export default function Home() {
               <div className="contact-links">
                 <a href="https://wa.me/918921691154?text=Hi%20Verna%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noreferrer">
                   <MessageCircle size={16} className="contact-icon" />
-                  <span>WHATSAPP (+91 89216 91154)</span>
+                  <span>+91 89216 91154</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="mailto:farha.najameel69@gmail.com">
@@ -173,19 +173,14 @@ export default function Home() {
                   <span>farha.najameel69@gmail.com</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
-                <a href="tel:+918921691154">
-                  <Phone size={16} className="contact-icon" />
-                  <span>+91 89216 91154</span>
-                  <ArrowUpRight size={14} className="contact-arrow" />
-                </a>
                 <a href="https://www.linkedin.com/in/farha-najameel-91133343a/" target="_blank" rel="noreferrer">
                   <Linkedin size={16} className="contact-icon" />
-                  <span>LINKEDIN (Farha Najameel)</span>
+                  <span>Farha Najameel</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://www.instagram.com/farha_najameel" target="_blank" rel="noreferrer">
                   <Instagram size={16} className="contact-icon" />
-                  <span>INSTAGRAM (@farha_najameel)</span>
+                  <span>@farha_najameel</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
