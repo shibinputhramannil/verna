@@ -164,22 +164,34 @@ export default function Home() {
               <p>Tell us what is changing, what is stuck, or what you are trying to make possible.</p>
               <div className="contact-links">
                 <a href="https://wa.me/918921691154?text=Hi%20Verna%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noreferrer">
-                  <MessageCircle size={15} className="contact-icon" /> WHATSAPP (+91 89216 91154) <ArrowUpRight size={14} />
+                  <MessageCircle size={16} className="contact-icon" />
+                  <span>WHATSAPP (+91 89216 91154)</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="mailto:farha.najameel69@gmail.com">
-                  <Mail size={15} className="contact-icon" /> farha.najameel69@gmail.com <ArrowUpRight size={14} />
+                  <Mail size={16} className="contact-icon" />
+                  <span>farha.najameel69@gmail.com</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="tel:+918921691154">
-                  <Phone size={15} className="contact-icon" /> +91 89216 91154 <ArrowUpRight size={14} />
+                  <Phone size={16} className="contact-icon" />
+                  <span>+91 89216 91154</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
+                </a>
+                <a href="https://www.linkedin.com/in/farha-najameel-91133343a/" target="_blank" rel="noreferrer">
+                  <Linkedin size={16} className="contact-icon" />
+                  <span>LINKEDIN (Farha Najameel)</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://www.instagram.com/farha_najameel" target="_blank" rel="noreferrer">
-                  <Instagram size={15} className="contact-icon" /> INSTAGRAM (@farha_najameel) <ArrowUpRight size={14} />
-                </a>
-                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-                  <Linkedin size={15} className="contact-icon" /> LINKEDIN <ArrowUpRight size={14} />
+                  <Instagram size={16} className="contact-icon" />
+                  <span>INSTAGRAM (@farha_najameel)</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
-                  <MapPin size={15} className="contact-icon" /> 6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014 <ArrowUpRight size={14} />
+                  <MapPin size={16} className="contact-icon" />
+                  <span>6th Floor, HiLITE Business Park, A106, Poovangal, Kozhikode, Keralam 673014</span>
+                  <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
               </div>
             </div>
