@@ -30,6 +30,7 @@ const cases = [
 ];
 
 const team = [
+  ["KI", "Kiran", "HEAD OF BUSINESS DEVELOPMENT", "Strategic growth lead. Expands market reach and shapes high-value client partnerships.", "/team-kiran.jpg"],
   ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results.", "/team-sangeeth.jpg"],
   ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences.", "/team-sibin.jpg"],
 ];
