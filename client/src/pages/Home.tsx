@@ -106,7 +106,16 @@ export default function Home() {
     <div className="creoture-mode">
       <div className="grain" aria-hidden="true" />
       <header className="reference-header">
-        <div className="ref-brand"><a href="#home">VERNA</a><span className="brand-caption">CONSULTING</span></div>
+        <div className="ref-brand">
+          <a href="#home" className="brand-link">
+            <div className="brand-logo-wrap">
+              <img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="28" height="28" />
+              <div className="logo-mirror-shadow" aria-hidden="true" />
+            </div>
+            <span>VERNA</span>
+          </a>
+          <span className="brand-caption-logo">CONSULTING</span>
+        </div>
         <div className="system-status"><span className="status-pulse" /> SYSTEMS / OPERATIONAL <span className="status-divider">|</span> VER. 2026.Q4</div>
         <button className="ref-menu" onClick={() => setMenuOpen((value) => !value)} aria-label="Toggle navigation" aria-expanded={menuOpen}>{menuOpen ? <X size={18} /> : <Menu size={18} />}</button>
         <nav className={menuOpen ? "ref-nav is-open" : "ref-nav"}>
@@ -117,6 +126,10 @@ export default function Home() {
 
       <main>
         <section id="home" className="ref-hero ref-section">
+          <div className="hero-bg-mirror-logo" aria-hidden="true">
+            <img src="/verna-logo.png" alt="" />
+            <div className="hero-bg-mirror-reflection" />
+          </div>
           <div className="ref-container hero-ref-grid">
             <div className="hero-micro"><span>INDEPENDENT CONSULTING</span><span>EST. 2016</span></div>
             <div className="hero-side-note">STRATEGY<br />SYSTEMS<br />GROWTH</div>
@@ -178,9 +191,9 @@ export default function Home() {
                   <span>Farha Najameel</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
-                <a href="https://www.instagram.com/farha_najameel" target="_blank" rel="noreferrer">
+                <a href="https://instagram.com/verna_consultancy" target="_blank" rel="noreferrer">
                   <Instagram size={16} className="contact-icon" />
-                  <span>@farha_najameel</span>
+                  <span>@verna_consultancy</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://maps.google.com/?q=HiLITE+Business+Park+Kozhikode" target="_blank" rel="noreferrer">
@@ -270,7 +283,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo" href="#home">VERNA</a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><div className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
+      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo brand-link" href="#home"><div className="brand-logo-wrap footer-logo-wrap"><img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="34" height="34" /><div className="logo-mirror-shadow" aria-hidden="true" /></div><span>VERNA</span></a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><div className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
     </div>
   );
 }

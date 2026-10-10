@@ -25,8 +25,14 @@ export default function TermsAndConditions() {
       {/* Header */}
       <header className="reference-header">
         <div className="ref-brand">
-          <a href="/">VERNA</a>
-          <span className="brand-caption">CONSULTING</span>
+          <a href="/" className="brand-link">
+            <div className="brand-logo-wrap">
+              <img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="28" height="28" />
+              <div className="logo-mirror-shadow" aria-hidden="true" />
+            </div>
+            <span>VERNA</span>
+          </a>
+          <span className="brand-caption-logo">CONSULTING</span>
         </div>
         <div className="system-status">
           <span className="status-pulse" /> SYSTEMS / OPERATIONAL <span className="status-divider">|</span> LEGAL
@@ -212,7 +218,13 @@ export default function TermsAndConditions() {
       <footer className="ref-footer">
         <div className="ref-container footer-main">
           <div>
-            <a className="footer-logo" href="/">VERNA</a>
+            <a className="footer-logo brand-link" href="/">
+              <div className="brand-logo-wrap footer-logo-wrap">
+                <img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="34" height="34" />
+                <div className="logo-mirror-shadow" aria-hidden="true" />
+              </div>
+              <span>VERNA</span>
+            </a>
             <p>Strategy, systems, and growth.</p>
           </div>
           <div className="footer-nav">
