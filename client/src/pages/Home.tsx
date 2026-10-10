@@ -30,9 +30,9 @@ const cases = [
 ];
 
 const team = [
+  ["SA", "Sangeeth", "FOUNDER", "Vision and technology leadership. Directs complex systems and strategic execution.", "/team-sangeeth.jpg"],
+  ["SI", "Sibin", "FOUNDER", "Product and engineering lead. Crafts innovative digital solutions and operational scale.", "/team-sibin.jpg"],
   ["KI", "Kiran", "HEAD OF BUSINESS DEVELOPMENT", "Strategic growth lead. Expands market reach and shapes high-value client partnerships.", "/team-kiran.jpg"],
-  ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results.", "/team-sangeeth.jpg"],
-  ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences.", "/team-sibin.jpg"],
 ];
 
 export default function Home() {
