@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X, Loader2, Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Menu, X, Loader2, Mail, Phone, MapPin, Instagram, MessageCircle } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -30,7 +30,6 @@ const cases = [
 ];
 
 const team = [
-  ["FN", "Farha Najameel", "FOUNDER", "Visionary leader. Turns bold ideas into businesses that move.", "/team-farha.png"],
   ["SA", "Sangeeth", "DEVELOPER", "Full-stack engineer. Builds scalable systems that deliver results.", "/team-sangeeth.jpg"],
   ["SI", "Sibin", "DEVELOPER", "Creative technologist. Writes clean code that powers great experiences.", "/team-sibin.jpg"],
 ];
@@ -87,7 +86,7 @@ export default function Home() {
           setConsentAgreed(false);
           form.reset();
         } else {
-          setErrorMessage(data.message || "Failed to send message. Please email farha.najameel69@gmail.com directly.");
+          setErrorMessage(data.message || "Failed to send message. Please email consultancy.verna@gmail.com directly.");
         }
       } catch {
         setErrorMessage("Network error. Please reach out via WhatsApp or email directly.");
@@ -181,14 +180,9 @@ export default function Home() {
                   <span>+91 89216 91154</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
-                <a href="mailto:farha.najameel69@gmail.com">
+                <a href="mailto:consultancy.verna@gmail.com">
                   <Mail size={16} className="contact-icon" />
-                  <span>farha.najameel69@gmail.com</span>
-                  <ArrowUpRight size={14} className="contact-arrow" />
-                </a>
-                <a href="https://www.linkedin.com/in/farha-najameel-91133343a/" target="_blank" rel="noreferrer">
-                  <Linkedin size={16} className="contact-icon" />
-                  <span>Farha Najameel</span>
+                  <span>consultancy.verna@gmail.com</span>
                   <ArrowUpRight size={14} className="contact-arrow" />
                 </a>
                 <a href="https://instagram.com/verna_consultancy" target="_blank" rel="noreferrer">
@@ -283,7 +277,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo brand-link" href="#home"><div className="brand-logo-wrap footer-logo-wrap"><img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="34" height="34" /><div className="logo-mirror-shadow" aria-hidden="true" /></div><span>VERNA</span></a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><div className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
+      <footer className="ref-footer"><div className="ref-container footer-main"><div><a className="footer-logo brand-link" href="#home"><div className="brand-logo-wrap footer-logo-wrap"><img src="/verna-logo.png" alt="Verna Logo" className="brand-logo-img" width="34" height="34" /><div className="logo-mirror-shadow" aria-hidden="true" /></div><span>VERNA</span></a><p>Strategy, systems, and growth.</p></div><div className="footer-nav">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}</div><div className="footer-contact"><a href="mailto:consultancy.verna@gmail.com">consultancy.verna@gmail.com</a><a href="tel:+918921691154">+91 89216 91154</a></div></div><div className="ref-container footer-bottom"><span>© 2026 Verna Consulting. All rights reserved.</span><div className="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a><span>·</span><a href="/terms-and-conditions">Terms &amp; Conditions</a></div><span>KOZHIKODE · KERALA · INDIA</span></div></footer>
     </div>
   );
 }

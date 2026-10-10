@@ -129,7 +129,7 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="legal-list">
                 <li>
-                  <strong>Web3Forms (Form Submission API):</strong> Submissions from our contact form are processed via Web3Forms to securely deliver your message directly to our official corporate mailbox (<a href="mailto:farha.najameel69@gmail.com" className="legal-inline-link">farha.najameel69@gmail.com</a>).
+                  <strong>Web3Forms (Form Submission API):</strong> Submissions from our contact form are processed via Web3Forms to securely deliver your message directly to our official corporate mailbox (<a href="mailto:consultancy.verna@gmail.com" className="legal-inline-link">consultancy.verna@gmail.com</a>).
                 </li>
                 <li>
                   <strong>WhatsApp (Direct Chat Option):</strong> When you click the WhatsApp link, you are redirected to the WhatsApp platform, governed by Meta&apos;s privacy policy.
@@ -165,7 +165,7 @@ export default function PrivacyPolicy() {
                 <li>Request deletion of your contact records from our communication systems.</li>
               </ul>
               <p>
-                To exercise any of these rights, please email us directly at <a href="mailto:farha.najameel69@gmail.com" className="legal-inline-link">farha.najameel69@gmail.com</a>.
+                To exercise any of these rights, please email us directly at <a href="mailto:consultancy.verna@gmail.com" className="legal-inline-link">consultancy.verna@gmail.com</a>.
               </p>
             </section>
 
@@ -186,7 +186,7 @@ export default function PrivacyPolicy() {
                   <Mail size={16} className="purple-text" />
                   <div>
                     <strong>Email:</strong>{" "}
-                    <a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a>
+                    <a href="mailto:consultancy.verna@gmail.com">consultancy.verna@gmail.com</a>
                   </div>
                 </div>
                 <div className="legal-contact-item">
@@ -240,7 +240,7 @@ export default function PrivacyPolicy() {
             {navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}
           </div>
           <div className="footer-contact">
-            <a href="mailto:farha.najameel69@gmail.com">farha.najameel69@gmail.com</a>
+            <a href="mailto:consultancy.verna@gmail.com">consultancy.verna@gmail.com</a>
             <a href="tel:+918921691154">+91 89216 91154</a>
           </div>
         </div>
