@@ -10,11 +10,11 @@ const navItems = [
 ];
 
 const services = [
-  ["01", "STRATEGY & TRANSFORMATION", "Make the important decisions visible — and make them stick."],
-  ["02", "DIGITAL OPERATIONS", "Faster, clearer systems for the work that keeps the business moving."],
-  ["03", "TECHNOLOGY DELIVERY", "From product direction to shipped software, without the theatre."],
-  ["04", "OPERATING MODEL", "Align teams, incentives, and rituals around the outcomes that matter."],
-  ["05", "EXECUTIVE ADVISORY", "An experienced perspective when the next move carries weight."],
+  ["01", "Sales CRM & Telecalling Automation", "Streamline your sales process with intelligent customer relationship management and telecalling automation. Manage leads, track sales opportunities, automate follow-ups, and improve customer engagement to close deals faster."],
+  ["02", "Workforce HRMS & Payroll Management", "Simplify employee management with an integrated HRMS and payroll solution. Manage employee records, track attendance and leave, automate salary calculations, and generate payroll reports efficiently."],
+  ["03", "Enterprise Resource Planning (ERP)", "Bring your core business operations together with a centralized ERP solution. Manage sales, purchases, inventory, finance, and business workflows in one integrated system to improve productivity and decision-making."],
+  ["04", "GPS Geofenced Attendance", "Track employee attendance accurately using GPS and geofencing technology. Set authorized workplace boundaries, verify location-based check-ins and check-outs, and maintain reliable attendance records for better workforce management."],
+  ["05", "Warehouse Stock & Unit Rate Tracking", "Simplify warehouse operations with efficient stock and unit rate tracking. Monitor product quantities, track stock movements, maintain purchase rates, and improve inventory accuracy and cost control with organized inventory records."],
 ];
 
 const steps = [
@@ -152,7 +152,7 @@ export default function Home() {
         </section>
 
         <section id="expertise" className="ref-section services-ref-section">
-          <div className="ref-container"><p className="section-code">/ 02 — EXPERTISE</p><div className="section-title-row scroll-reveal"><h2>SERVICES</h2><p>Five ways we help ambitious teams move from uncertainty to outcomes.</p></div><div className="service-list">{services.map(([number, title, copy]) => <a className="service-row scroll-reveal" href="#contact" key={number}><span className="service-num">{number}</span><h3>{title}</h3><span className="service-copy">{copy}</span><ArrowUpRight className="service-arrow" size={20} /></a>)}</div></div>
+          <div className="ref-container"><p className="section-code">/ 02 — EXPERTISE</p><div className="section-title-row scroll-reveal"><h2>SERVICES</h2><p>Five ways we help ambitious teams move from uncertainty to outcomes.</p></div><div className="service-list">{services.map(([number, title, copy]) => <a className="service-row scroll-reveal" href="#contact" key={number}><span className="service-num">{number}</span><div className="service-content"><h3>{title}</h3><span className="service-copy">{copy}</span></div><ArrowUpRight className="service-arrow" size={20} /></a>)}</div></div>
         </section>
 
         <div className="marquee-band marquee-band-purple" aria-hidden="true"><div className="marquee-track marquee-reverse"><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i><span>STRATEGY · TECHNOLOGY · OPERATIONS</span><i>✦</i><span>FROM INSIGHT TO IMPACT</span><i>✦</i></div></div>
